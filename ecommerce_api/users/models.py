@@ -8,6 +8,8 @@ class CustomUserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, username=username)
         user.set_password(password)
+        user.is_active = True  # Default to active
+        user.is_staff = False  # Default to non-staff
         user.save(using=self._db)
         return user
 
@@ -24,6 +26,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
+    # Relationships with groups and permissions (already included correctly)
     groups = models.ManyToManyField(
         'auth.Group',
         related_name='customuser_set',  
@@ -40,3 +43,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
+
+    def __str__(self):
+        return self.username
