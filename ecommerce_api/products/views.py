@@ -4,6 +4,13 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Product, Category
 from .serializers import ProductSerializer, CategorySerializer
 import django_filters
+from rest_framework.pagination import PageNumberPagination
+
+
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 class ProductFilter(django_filters.FilterSet):
     category = django_filters.CharFilter(field_name="category__name", lookup_expr='icontains')
