@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ayv&ax)5(3w3ie%tss$x+r^4dr=8z50$v@kw-)7@57776u&%8%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['ugochukwu.pythonanywhere.com']
 
 
 # Application definition
@@ -86,7 +86,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -158,3 +157,6 @@ SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = False
 
 CSRF_COOKIE_SECURE = False
+
+
+
